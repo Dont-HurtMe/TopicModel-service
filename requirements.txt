@@ -11,4 +11,4 @@ openai
 google-generativeai
 quadtreed3
 ndjson
-git+https://github.com/SothanaV/http-server.git
+http_server @ git+https://github.com/SothanaV/http-server.git@62b5a7d11b6de0ac574887afdcc3a4385cd53eb7
