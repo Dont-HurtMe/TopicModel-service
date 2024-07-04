@@ -1,20 +1,26 @@
-# Wizmap-tool 
-- demo service wizmap
+# **dsm_wizservice**
+- demo service topic model
 - backup code
 
-## Example use:
+## **Example use:**
 
-- import 
+### **Import** 
 ```python
-from model import topic_model
+from dsm_wizservices import TopicModel
 ```
 
-- input data
+### **Input data**
 ```python
-docs = ['text_1', 'text_2', 'text_3', ... 'text_n']
+docs = ['sentence_1', 'sentence_2', 'sentence_3', ... 'sentence_n']
 ```
 
-- defind service
+### **Defind Parameters**
+- **Quick start**
+```python
+tp_model = TopicModel(save_folder='./output_test/')
+```
+
+- **Example Defind Parameters**
 ```python
 from sentence_transformers import SentenceTransformer 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -37,7 +43,7 @@ countvec = CountVectorizer(stop_words="english", ngram_range=(1, 1))
 cluster_model = MeanShift(bandwidth=0.7)
 ```
 ```python
-tp_model = topic_model(save_folder='output_test/', # path directory to save wizmap data [grid.json, data.ndjson] 
+tp_model = TopicModel(save_folder='output_test/', # path directory to save wizmap data [grid.json, data.ndjson] 
     # gpt_api_key=api_key, # if apikey is gpt api_key 
     n_sample_summary=20, # sample of sammary in each cluster
     gemini_api_key=gemini_key, 
@@ -52,25 +58,25 @@ tp_model = topic_model(save_folder='output_test/', # path directory to save wizm
 tp_model.params_llm_set(model_name='gemini-pro') # example set parameters of llm
 ```
 
-- get wizmap and output
+### **Get wizmap and output**
 ```python
 result = tp_model.fit_transforms(docs)
 ```
 
-- details of output
+### **Details of output**
+After generating these has two JSON files (one with grid.json and one with data.ndjson). You can store them in somewhere network.
+
 ```python
 # result type is dictionary 2 keys
-
-# key1 backup data in each points after process
+# key1 annotation of each points after generate.
 dataframe = result['data']
-# key2 dataframe of summary and topword in each cluster this can help to analysis 
+# key2 dataframe of summary and topword in each cluster this can help to analysis.
 topic_dataframe = result['topword']
 ```
-After generating these has two JSON files (one with grid.json and one with data.ndjson). You can store them in somewhere network 
 
-- run wizmap on local 
+### **Run Wizmap on local**
 ```python
-from model import plot_local
+from dsm_wizservices import plot_local
 
 plot_local(directory_folder_of_wizmap='output_test/wizmapJson/')
 ```
