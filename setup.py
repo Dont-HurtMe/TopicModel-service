@@ -4,22 +4,18 @@ from setuptools import setup, find_packages
 
 package = "dsm_wizservices"
 
-def get_version():
-    init_py = open(os.path.join(package, '__init__.py')).read()
-    return re.search("__version__ = ['\"]([^'\"]+)['\"]", init_py).group(1)
-
 def read_requirements(filename):
     with open(filename, 'r') as file:
         return file.read().splitlines()
 
-with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
+with open('README.md', 'r', encoding='utf-8') as readme:
     README = readme.read()
 
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='dsm_wizservices',
-    version=get_version(),
+    version='0.0.1',
     description='A service for topic modeling using visualize sentence embedding.',
     author_email='pwlnwzarediooo@gmail.com',
     url='https://github.com/Dont-HurtMe/TopicModel-service',
@@ -36,5 +32,5 @@ setup(
         'Topic :: Scientific/Engineering :: Visualization',
         'Topic :: Scientific/Engineering :: Information Analysis',
     ],
-    python_requires='>=3.10',
+    python_requires='>=3.9',
 )
