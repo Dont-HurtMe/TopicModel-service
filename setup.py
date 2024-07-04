@@ -1,5 +1,4 @@
 import os
-import re
 from setuptools import setup, find_packages
 
 package = "dsm_wizservices"
@@ -11,20 +10,17 @@ def read_requirements(filename):
 with open('README.md', 'r', encoding='utf-8') as readme:
     README = readme.read()
 
-os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
-
 setup(
     name='dsm_wizservices',
     version='0.0.1',
     description='A service for topic modeling using visualize sentence embedding.',
+    long_description=README,
+    long_description_content_type='text/markdown',
     author_email='pwlnwzarediooo@gmail.com',
     url='https://github.com/Dont-HurtMe/TopicModel-service',
     packages=find_packages(),
     include_package_data=True,
     install_requires=read_requirements('requirements.txt'),
-    dependency_links=[
-        'git+https://github.com/Dont-HurtMe/TopicModel-service.git#egg=TopicModelService-0.1.0'
-    ],
     classifiers=[
         'Programming Language :: Python :: 3',
         'Intended Audience :: Science/Research',
