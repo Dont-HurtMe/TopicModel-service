@@ -1,0 +1,29 @@
+*.csv
+*.parquet
+*.json
+*.ndjson
+*.npy
+*.state
+*.xls
+*.xlsx
+*.pkl
+
+# python
+env/
+*.pyc
+**__pycache__/
+
+# js
+**node_modules/
+**package-lock.json
+
+# mac
+.DS_Store
+.vscode/
+
+# django
+*.sqlite3
+*.Trash*
+**/otop-image
+**/.ipynb_checkpoints
+*.env
