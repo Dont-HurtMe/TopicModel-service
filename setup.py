@@ -1,31 +1,40 @@
-# setup.py
 import os
+import re
 from setuptools import setup, find_packages
+
+package = "dsm_wizservices"
+
+def get_version():
+    init_py = open(os.path.join(package, '__init__.py')).read()
+    return re.search("__version__ = ['\"]([^'\"]+)['\"]", init_py).group(1)
+
+def read_requirements(filename):
+    with open(filename, 'r') as file:
+        return file.read().splitlines()
+
+with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
+    README = readme.read()
 
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='wkge-service',
-    version='0.1.0',
+    name='dsm_wizservices',
+    version=get_version(),
+    description='A service for topic modeling using visualize sentence embedding.',
+    author_email='pwlnwzarediooo@gmail.com',
+    url='https://github.com/Dont-HurtMe/TopicModel-service',
     packages=find_packages(),
-    install_requires=[
-        # List your project's dependencies here.
-        # 'somepackage>=1.0',
+    include_package_data=True,
+    install_requires=read_requirements('requirements.txt'),
+    dependency_links=[
+        'git+https://github.com/Dont-HurtMe/TopicModel-service.git#egg=TopicModelService-0.1.0'
     ],
-    entry_points={
-        'console_scripts': [
-            # Define any command-line scripts here.
-            # 'mycommand = myproject.module1:main',
-        ],
-    },
-    description='A simplified implementation of WizMap for document clustering and summarization using LLMs.',
-    # long_description=open('README.md').read(),
-    long_description_content_type='text/markdown',
     classifiers=[
         'Programming Language :: Python :: 3',
         'Intended Audience :: Science/Research',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
         'Topic :: Scientific/Engineering :: Visualization',
-        'Topic :: Scientific/Engineering :: Information Analysis',],
+        'Topic :: Scientific/Engineering :: Information Analysis',
+    ],
     python_requires='>=3.10',
 )
