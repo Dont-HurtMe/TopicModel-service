@@ -80,3 +80,10 @@ from dsm_wizservices import plot_local
 
 plot_local(directory_folder_of_wizmap='output_test/wizmapJson/')
 ```
+
+
+### Jupyter
+#### step by step & one shot 
+- <a href="/notebook/_00-example-use.ipynb"> _00-example-use.ipynb </a>
+
+
