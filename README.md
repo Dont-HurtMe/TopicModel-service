@@ -4,6 +4,10 @@
 
 ## **Example use:**
 
+### **Install** 
+```
+pip install git+https://github.com/Dont-HurtMe/TopicModel-service.git
+```
 ### **Import** 
 ```python
 from dsm_wizservices import TopicModel
